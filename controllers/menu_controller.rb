@@ -11,6 +11,7 @@ class MenuController
   def main_menu
     # #2 display the main menu options to the command line
     puts "Main Menu - #{address_book.entries.count} entries"
+    puts "0 - View Entry Number n"
     puts "1 - View all entries"
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
@@ -23,6 +24,10 @@ class MenuController
 
     # #7 use a case statement operator to determine the proper response to a user's input
     case selection
+    when 0
+      system "clear"
+      view_entry
+      main_menu
     when 1
       system "clear"
       view_all_entries
@@ -50,6 +55,21 @@ class MenuController
       main_menu
     end
   end
+
+  def view_entry
+    puts "What # entry would you like to see?"
+    print "Number: "
+    number = gets.chomp.to_i
+
+    if number < address_book.entries.count
+      puts address_book.entries[number]
+    else
+      puts "#{number} is not a valid selection"
+      main_menu
+    end
+  end
+
+
 
   def view_all_entries
     # #14 iterate through all entries in AddressBook using each
