@@ -72,4 +72,8 @@ class AddressBook
     # #5 if no results, return "nil"
     return nil
   end
+
+  def detonate
+    @entries = []
+  end
 end
